@@ -8,7 +8,7 @@ interface IButton {
 export const Button: React.FC<IButton> = (props) => {
   const { children, type } = props;
   return (
-    <button type={type} className={"btn btn-primary"}>
+    <button type={type} className={"btn btn-primary ms-2"}>
       {children}
     </button>
   );

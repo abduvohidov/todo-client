@@ -12,7 +12,7 @@ export const Input: React.FC<IInput> = (props) => {
   return (
     <input
       type={type}
-      className={"form-control w-25 m-auto my-5"}
+      className={"form-control w-25"}
       placeholder={placeholder}
       value={value}
       onClick={onClick}
