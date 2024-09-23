@@ -27,7 +27,7 @@ interface User {
 }
 
 export const Tasks: React.FC = () => {
-  const base_url = "https://jsonplaceholder.typicode.com/users";
+  const base_url = "http://localhost:3000/tasks";
   const [data, setData] = useState<User[] | null>(null);
 
   async function getData() {
