@@ -4,18 +4,18 @@ interface IInput {
   placeholder: string;
   type?: string;
   value?: string;
-  onClick?: () => void;
+  onChange?: () => void;
 }
 
 export const Input: React.FC<IInput> = (props) => {
-  const { placeholder, type = "text", value, onClick } = props;
+  const { placeholder, type = "text", value, onChange } = props;
   return (
     <input
       type={type}
       className={"form-control w-25"}
       placeholder={placeholder}
       value={value}
-      onClick={onClick}
+      onChange={onChange}
     />
   );
 };
