@@ -2,33 +2,17 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { List } from "../../shared/ui/List/List";
 
-interface User {
+interface ITask {
   id: number;
   name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
 }
 
-export const Tasks: React.FC = () => {
+interface ITasks {
+  value?: string;
+}
+export const Tasks: React.FC<ITasks> = () => {
   const base_url = "http://localhost:3000/tasks";
-  const [data, setData] = useState<User[] | null>(null);
+  const [data, setData] = useState<ITask[] | null>(null);
 
   async function getData() {
     const response = await axios.get(base_url);
@@ -37,7 +21,7 @@ export const Tasks: React.FC = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [data]);
 
   function renderList() {
     if (data) {
@@ -47,5 +31,12 @@ export const Tasks: React.FC = () => {
     }
   }
 
-  return <ul className="list-group list-group-flush m-auto mt-4" style={{width: "32%"}}>{renderList()}</ul>;
+  return (
+    <ul
+      className="list-group list-group-flush m-auto mt-4"
+      style={{ width: "32%" }}
+    >
+      {renderList()}
+    </ul>
+  );
 };

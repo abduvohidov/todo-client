@@ -4,11 +4,12 @@ interface IInput {
   placeholder: string;
   type?: string;
   value?: string;
-  onChange?: () => void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown: () => void;
 }
 
 export const Input: React.FC<IInput> = (props) => {
-  const { placeholder, type = "text", value, onChange } = props;
+  const { placeholder, type = "text", value, onChange, onKeyDown } = props;
   return (
     <input
       type={type}
@@ -16,6 +17,7 @@ export const Input: React.FC<IInput> = (props) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      onKeyDown={onKeyDown}
     />
   );
 };

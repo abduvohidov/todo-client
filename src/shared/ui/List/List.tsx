@@ -15,7 +15,15 @@ export const List: React.FC<IList> = (props) => {
         "list-group-item d-flex align-items-center justify-content-between"
       }
     >
-      <p>{children}</p>
+      <input
+        className="form-check-input"
+        type="checkbox"
+        value=""
+        id={children}
+      />
+      <label className="form-check-label ps-3 me-auto" htmlFor={children}>
+        {children}
+      </label>
       <div className="GroupButtons">
         <UpdateControlButton className={"me-2"} />
         <RemoveControlButton />
