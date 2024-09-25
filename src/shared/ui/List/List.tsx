@@ -1,13 +1,19 @@
 import React from "react";
+import "./List.css";
 import { UpdateControlButton } from "../../../features/UpdateControlButton/UpdateControlButton";
 import { RemoveControlButton } from "../../../features/RemoveControlButton/UpdateControlButton";
 
 interface IList {
   children: string;
+  onClickUpdate?: () => void;
+  onClickRemove?: () => void;
+  toggleModal?: string;
+  targetModal?: string;
 }
 
 export const List: React.FC<IList> = (props) => {
-  const { children } = props;
+  const { children, onClickRemove, onClickUpdate, toggleModal, targetModal } =
+    props;
 
   return (
     <li
@@ -15,18 +21,21 @@ export const List: React.FC<IList> = (props) => {
         "list-group-item d-flex align-items-center justify-content-between"
       }
     >
-      <input
-        className="form-check-input"
-        type="checkbox"
-        value=""
-        id={children}
-      />
-      <label className="form-check-label ps-3 me-auto" htmlFor={children}>
-        {children}
-      </label>
+      <form action="">
+        <div>
+          <input type="checkbox" id={children} />
+          <label htmlFor={children}>{children}</label>
+        </div>
+      </form>
+
       <div className="GroupButtons">
-        <UpdateControlButton className={"me-2"} />
-        <RemoveControlButton />
+        <UpdateControlButton
+          className={"me-2"}
+          onClick={onClickUpdate}
+          targetModal={targetModal}
+          toggleModal={toggleModal}
+        />
+        <RemoveControlButton onClick={onClickRemove} />
       </div>
     </li>
   );

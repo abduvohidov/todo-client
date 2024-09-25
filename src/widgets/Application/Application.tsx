@@ -14,7 +14,7 @@ export const Application = () => {
 
   async function postData(value: string) {
     const postData = {
-      id: Math.floor(Math.random() * 10000000000),
+      id: Math.floor(Math.random() * 10000000000).toString(),
       name: value,
     };
 

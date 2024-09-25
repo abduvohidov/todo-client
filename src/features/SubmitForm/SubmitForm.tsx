@@ -11,6 +11,7 @@ interface ISubmitForm {
 
 export const SubmitForm: React.FC<ISubmitForm> = (props) => {
   const { onChange, onClick, onKeyDown, value } = props;
+
   return (
     <div className={"d-flex align-items-center justify-content-center mt-4"}>
       <Input
